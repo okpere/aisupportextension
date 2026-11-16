@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Support AI Copilot",
+  "version": "0.1.0",
+  "description": "Analyze customer tickets and get suggested replies.",
+  "permissions": ["contextMenus", "storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["http://localhost:4000/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["content.js"], "run_at": "document_idle" }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["sidepanel.html", "assets/*"], "matches": ["<all_urls>"] }
+  ]
+}
